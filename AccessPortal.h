@@ -10,10 +10,10 @@ public:
   AccessPortal(char* ssid, char* password, String token);
   String getStudentDetails(int* byteArray, char* detail);
   bool checkPermission(char* permission);
-  WiFiClientSecure connect();
   void getByteArray(char* uidInput, int* uidOutput);
 private:
   char* getPermissions(char* userToken);
+  WiFiClientSecure connect();
   char* _ssid;
   char* _password;
   String _token;
