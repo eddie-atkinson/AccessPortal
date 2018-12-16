@@ -27,7 +27,6 @@ WiFiClientSecure AccessPortal::connect() {
   WiFiClientSecure client;
   if(!client.connect(host, httpsPort)) {
     Serial.println("connection failed");
-    return client;
   }
   return client;
 }
