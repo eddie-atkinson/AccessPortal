@@ -14,7 +14,6 @@ AccessPortal::AccessPortal(char* ssid, char* password, String token) {
   _token = token;
 }
 
-/* TODO: make connect throw an exception when the connection fails */
 WiFiClientSecure AccessPortal::connect() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(_ssid, _password);
