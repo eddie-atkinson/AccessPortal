@@ -13,7 +13,7 @@ public:
   void getByteArray(char* uidInput, int* uidOutput);
 private:
   char* getPermissions(char* userToken);
-  WiFiClientSecure connect();
+  bool connect();
   char* _ssid;
   char* _password;
   String _token;
