@@ -45,6 +45,10 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   String AccessPortal::getStudentDetails(int* byteArray, char* detail) {
   char* response;
   WiFiClientSecure client = connect();
+  if(client.connected != 1) {
+    Serial.println("Client is not connected.");
+    return "ERROR";
+  }
   String payload = "uuid="+ String(byteArray[0]) + "&uuid="+ String(byteArray[1]) + "&uuid="+ String(byteArray[2]) +"&uuid=" + String(byteArray[3]) + "&token=" + _token + "&userToken=True";
   client.print("POST: ");
   client.print(cardURL);
