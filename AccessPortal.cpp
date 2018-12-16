@@ -13,7 +13,6 @@ AccessPortal::AccessPortal(char* ssid, char* password, String token) {
   _password = password;
   _token = token;
 }
-<<<<<<< HEAD
 
 bool AccessPortal::connect() {
 =======
