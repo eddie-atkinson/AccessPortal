@@ -14,11 +14,8 @@ AccessPortal::AccessPortal(char* ssid, char* password, String token) {
   _token = token;
 }
 
-bool AccessPortal::connect() {
-=======
 /* TODO: make connect throw an exception when the connection fails */
 WiFiClientSecure AccessPortal::connect() {
->>>>>>> parent of 860bcc6... removed comment reminding me to make connect throw an exception when the connection fails
   WiFi.mode(WIFI_STA);
   WiFi.begin(_ssid, _password);
   Serial.println("Connecting");
@@ -30,9 +27,9 @@ WiFiClientSecure AccessPortal::connect() {
   WiFiClientSecure client;
   if(!client.connect(host, httpsPort)) {
     Serial.println("connection failed");
-    return false;
+    return client;
   }
-  return true;
+  return client;
 }
 
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
