@@ -14,7 +14,7 @@ AccessPortal::AccessPortal(char* ssid, char* password, String token) {
   _token = token;
 }
 
-WiFiClientSecure AccessPortal::connect() {
+bool AccessPortal::connect() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(_ssid, _password);
   Serial.println("Connecting");
@@ -25,9 +25,10 @@ WiFiClientSecure AccessPortal::connect() {
   Serial.println(WiFi.localIP());
   WiFiClientSecure client;
   if(!client.connect(host, httpsPort)) {
-    throw 408;
+    Serial.println("connection failed");
+    return false;
   }
-  return client;
+  return true;
 }
 
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
