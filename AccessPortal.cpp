@@ -48,9 +48,10 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
     Serial.println("Client is not connected.");
     return "ERROR";
   }
-  String payload = "uuid="+ String(byteArray[0]) + "&uuid="+ String(byteArray[1]) + "&uuid="+ String(byteArray[2]) +"&uuid=" + String(byteArray[3]) + "&token=" + _token + "&userToken=True";
-  client.print("POST: ");
-  client.print(cardURL);
+  String url = "/api/card";
+  String payload = "uuid=1&uuid=2&uuid=3&uuid=4&token=m7cGBbGflbJUGijdA7MrDBPStFxVHGKp9Ep4Z2sfKSk6&userToken=True";
+  client.print("POST ");
+  client.print(url);
   client.println(" HTTP/1.1");
   client.print("Host: ");
   client.println(host);
@@ -59,6 +60,7 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   client.println(payload.length());
   client.println();
   client.println(payload);
+
   Serial.println("request sent");
   while (client.connected()) {
     String line = client.readStringUntil('\n');
@@ -68,6 +70,10 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
     }
   }
   String line = client.readStringUntil('\r');
-  return payload;
-
+  Serial.println("reply was:");
+  Serial.println("==========");
+  Serial.println(line);
+  Serial.println("==========");
+  Serial.println("closing connection");
+  return line;
 }
