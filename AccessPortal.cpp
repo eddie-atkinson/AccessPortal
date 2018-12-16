@@ -44,7 +44,7 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   String AccessPortal::getStudentDetails(int* byteArray, char* detail) {
   char* response;
   WiFiClientSecure client = connect();
-  if(client.connected != 1) {
+  if(client.connected() != 1) {
     Serial.println("Client is not connected.");
     return "ERROR";
   }
