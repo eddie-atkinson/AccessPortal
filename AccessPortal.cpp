@@ -48,7 +48,7 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
     Serial.println("Client is not connected.");
     return "ERROR";
   }
-  String payload = "uuid=" + byteArray[0] + "&uuid=" + byteArray[1] +"&uuid=" + byteArray[2] + "&uuid=" + byteArray[3] + "&token="+ _token +"&userToken=True";
+  String payload = "uuid=" + String(byteArray[0]) + "&uuid=" + String(byteArray[1]) +"&uuid=" + String(byteArray[2]) + "&uuid=" + String(byteArray[3]) + "&token="+ _token +"&userToken=True";
   client.print("POST ");
   client.print(cardURL);
   client.println(" HTTP/1.1");
