@@ -30,6 +30,9 @@ WiFiClientSecure AccessPortal::connect() {
   return client;
 }
 
+void AccessPortal::detailsSplitter(String line, String* details) {
+  
+}
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   std::string uid(uidInput);
   unsigned int x;
@@ -74,5 +77,8 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   Serial.println(line);
   Serial.println("==========");
   Serial.println("closing connection");
+  detailsSplitter(line, details);
   return line;
 }
+
+

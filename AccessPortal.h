@@ -14,6 +14,7 @@ public:
 private:
   char* getPermissions(char* userToken);
   WiFiClientSecure connect();
+  void detailsSplitter(String line, String* details);
   char* _ssid;
   char* _password;
   String _token;
