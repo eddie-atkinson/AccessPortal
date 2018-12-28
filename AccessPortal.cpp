@@ -1,6 +1,7 @@
 /* Access portal library */
 #include "Arduino.h"
 #include "AccessPortal.h"
+#include "ArduinoJson.h"
 
 const char* host = "auth.uwamakers.com";
 const int httpsPort = 443;
