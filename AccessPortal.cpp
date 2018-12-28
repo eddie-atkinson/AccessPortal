@@ -32,7 +32,29 @@ WiFiClientSecure AccessPortal::connect() {
 }
 
 void AccessPortal::detailsSplitter(String line, String* details) {
+  DynamicJsonBuffer jsonBuffer;
+  DynamicJsonBuffer detailsBuffer;
+  JsonObject& root = jsonBuffer.parseObject(line);
+  String userDetails = root ["user"];
+  String userToken = root["userToken"];
+  JsonObject& container = jsonBuffer.parseObject(userDetails);
   
+  String username = container["username"];
+  String email = container["email"];
+  String fullname = container["fullname"];
+  String lastname = container["lastname"];
+  String firstname = container["firstname"];
+
+  details[0] = username;
+  details[1] = email;
+  details[2] = fullname;
+  details[3] = lastname;
+  details[4] = firstname;
+  details[5] = userToken;
+  
+  for(int i = 0; i < 6; i++) {
+    Serial.println(details[i]);
+  } 
 }
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   std::string uid(uidInput);
