@@ -8,7 +8,7 @@
 class AccessPortal {
 public:
   AccessPortal(char* ssid, char* password, String token);
-  String getStudentDetails(int* byteArray, char* detail);
+  String getStudentDetails(int* byteArray, String* detail);
   bool checkPermission(char* permission);
   void getByteArray(char* uidInput, int* uidOutput);
 private:

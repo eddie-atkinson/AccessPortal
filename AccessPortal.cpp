@@ -41,7 +41,7 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
       counter++;
   }
 }
-  String AccessPortal::getStudentDetails(int* byteArray, char* detail) {
+  String AccessPortal::getStudentDetails(int* byteArray, String* details) {
   char* response;
   WiFiClientSecure client = connect();
   if(client.connected() != 1) {
