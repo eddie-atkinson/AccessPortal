@@ -104,7 +104,35 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
 }
 
 bool AccessPortal::checkPermission(String permission, String userToken) {
+  String payload = "token=" + userToken;
+  WiFiClientSecure client = connect();
+  client.print("GET ");
+  client.print (permissionsURL);
+  client.println(" HTTP/1.1");
+  client.print("Host: ");
+  client.println(host);
+  client.println("Content-Type: application/x-www-form-urlencoded");
+  client.print("Content-Length: ");
+  client.println(payload.length());
+  client.println();
+  client.println(payload);
+  Serial.println("request sent");
+  while (client.connected()) {
+    String line = client.readStringUntil('\n');
+    if (line == "\r") {
+      Serial.println("headers received");
+      break;
+    }
+  }
+  String line = client.readStringUntil(']');
+  Serial.println("reply was:");
+  Serial.println("==========");
+  Serial.println(line);
+  Serial.println("==========");
+  Serial.println("closing connection");
   
+
+  return false;
 } 
 
 
