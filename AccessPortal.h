@@ -12,7 +12,7 @@ public:
   String getStudentDetails(int* byteArray, String* detail);
   bool checkPermission(char* permission);
   void getByteArray(char* uidInput, int* uidOutput);
-  bool checkPermission(String permission, String userToken);
+  bool checkPermission(const char* permission, String userToken);
 private:
   char* getPermissions(char* userToken);
   WiFiClientSecure connect();

@@ -103,7 +103,8 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   return status;
 }
 
-bool AccessPortal::checkPermission(String permission, String userToken) {
+bool AccessPortal::checkPermission(const char* permission, String userToken) {
+  bool hasPermission = false;
   String payload = "token=" + userToken;
   WiFiClientSecure client = connect();
   client.print("GET ");
@@ -131,8 +132,11 @@ bool AccessPortal::checkPermission(String permission, String userToken) {
   Serial.println("==========");
   Serial.println("closing connection");
   
-
-  return false;
+  const char* lineToSearch = line.c_str();
+  if(strstr(lineToSearch, permission) != NULL) {
+    hasPermission = true;
+  }
+  return hasPermission;
 } 
 
 
