@@ -103,4 +103,8 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   return status;
 }
 
+bool AccessPortal::checkPermission(String permission, String userToken) {
+  
+} 
+
 
