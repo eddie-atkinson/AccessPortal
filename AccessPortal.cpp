@@ -51,10 +51,6 @@ void AccessPortal::detailsSplitter(String line, String* details) {
   details[3] = lastname;
   details[4] = firstname;
   details[5] = userToken;
-  
-  for(int i = 0; i < 6; i++) {
-    Serial.println(details[i]);
-  } 
 }
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   std::string uid(uidInput);
