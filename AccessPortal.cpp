@@ -37,6 +37,7 @@ void AccessPortal::detailsSplitter(String line, String* details) {
   JsonObject& root = jsonBuffer.parseObject(line);
   String userDetails = root ["user"];
   String userToken = root["userToken"];
+  String status = root["success"];
   JsonObject& container = jsonBuffer.parseObject(userDetails);
   
   String username = container["username"];
@@ -51,6 +52,8 @@ void AccessPortal::detailsSplitter(String line, String* details) {
   details[3] = lastname;
   details[4] = firstname;
   details[5] = userToken;
+
+  return status; 
 }
 void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   std::string uid(uidInput);
