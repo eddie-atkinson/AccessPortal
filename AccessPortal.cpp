@@ -31,7 +31,7 @@ WiFiClientSecure AccessPortal::connect() {
   return client;
 }
 
-void AccessPortal::detailsSplitter(String line, String* details) {
+String AccessPortal::detailsSplitter(String line, String* details) {
   DynamicJsonBuffer jsonBuffer;
   DynamicJsonBuffer detailsBuffer;
   JsonObject& root = jsonBuffer.parseObject(line);
@@ -99,8 +99,8 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   Serial.println(line);
   Serial.println("==========");
   Serial.println("closing connection");
-  detailsSplitter(line, details);
-  return line;
+  String status = detailsSplitter(line, details);
+  return status;
 }
 
 
