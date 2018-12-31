@@ -4,16 +4,19 @@
 #include "stdlib.h"
 #include "ESP8266WiFi.h"
 #include "WiFiClientSecure.h"
+#include "ArduinoJson.h"
 
 class AccessPortal {
 public:
   AccessPortal(char* ssid, char* password, String token);
-  String getStudentDetails(int* byteArray, char* detail);
+  bool getStudentDetails(int* byteArray, String* detail);
   bool checkPermission(char* permission);
   void getByteArray(char* uidInput, int* uidOutput);
+  bool checkPermission(const char* permission, String userToken);
 private:
   char* getPermissions(char* userToken);
   WiFiClientSecure connect();
+  bool detailsSplitter(String line, String details[6]);
   char* _ssid;
   char* _password;
   String _token;
