@@ -31,7 +31,8 @@ WiFiClientSecure AccessPortal::connect() {
   return client;
 }
 
-String AccessPortal::detailsSplitter(String line, String* details) {
+bool AccessPortal::detailsSplitter(String line, String details[6]) {
+  bool successStatus = false;
   DynamicJsonBuffer jsonBuffer;
   DynamicJsonBuffer detailsBuffer;
   JsonObject& root = jsonBuffer.parseObject(line);
@@ -53,9 +54,13 @@ String AccessPortal::detailsSplitter(String line, String* details) {
   details[4] = firstname;
   details[5] = userToken;
 
-  return status; 
+  if(status == "true") {
+    successStatus = true;
+  }
+
+  return successStatus; 
 }
-void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
+void AccessPortal::getByteArray(char* uidInput, int uidOutput[4] ) {
   std::string uid(uidInput);
   unsigned int x;
   int counter = 0;
@@ -66,12 +71,12 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
       counter++;
   }
 }
-  String AccessPortal::getStudentDetails(int* byteArray, String* details) {
+  bool AccessPortal::getStudentDetails(int* byteArray, String details[6]) {
   char* response;
   WiFiClientSecure client = connect();
   if(client.connected() != 1) {
     Serial.println("Client is not connected.");
-    return "ERROR";
+    return false;
   }
   String payload = "uuid=" + String(byteArray[0]) + "&uuid=" + String(byteArray[1]) +"&uuid=" + String(byteArray[2]) + "&uuid=" + String(byteArray[3]) + "&token="+ _token +"&userToken=True";
   client.print("POST ");
@@ -99,14 +104,18 @@ void AccessPortal::getByteArray(char* uidInput, int* uidOutput ) {
   Serial.println(line);
   Serial.println("==========");
   Serial.println("closing connection");
-  String status = detailsSplitter(line, details);
-  return status;
+  bool successStatus = detailsSplitter(line, details);
+  return successStatus;
 }
 
 bool AccessPortal::checkPermission(const char* permission, String userToken) {
   bool hasPermission = false;
   String payload = "token=" + userToken;
   WiFiClientSecure client = connect();
+  if(client.connected() != 1) {
+    Serial.println("Client is not connected.");
+    return false;
+  }
   client.print("GET ");
   client.print (permissionsURL);
   client.println(" HTTP/1.1");
