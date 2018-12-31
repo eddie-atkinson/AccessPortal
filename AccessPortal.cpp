@@ -60,12 +60,11 @@ bool AccessPortal::detailsSplitter(String line, String details[6]) {
 
   return successStatus; 
 }
-void AccessPortal::getByteArray(char* uidInput, int uidOutput[4] ) {
-  std::string uid(uidInput);
+void AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
   unsigned int x;
   int counter = 0;
   for(int i = 1; i < 8; i += 2) {
-      std::string segment = uid.substr(i-1, 2);
+      String segment = uidInput.substring(i-1, i + 1);
       x = strtoul(segment.c_str(), nullptr, 16);
       uidOutput[counter] = x;
       counter++;
