@@ -92,8 +92,8 @@ bool AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
       x = strtoul(segment.c_str(), nullptr, 16);
       uidOutput[counter] = x;
       counter++;
-  return true;
   }
+  return true;
 }
 // Public method that makes a POST request to the endpoint using the UID byte array and the endpoint API token,
 // makes a call to detailsSplitter to split the JSON string and stores the result in an array of Strings.

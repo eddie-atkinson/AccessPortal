@@ -11,7 +11,7 @@ public:
   AccessPortal(char* ssid, char* password, String token);
   bool getStudentDetails(int* byteArray, String* detail);
   bool checkPermission(char* permission);
-  void getByteArray(String uidInput, int* uidOutput);
+  bool getByteArray(String uidInput, int* uidOutput);
   bool checkPermission(const char* permission, String userToken);
 private:
   char* getPermissions(char* userToken);
