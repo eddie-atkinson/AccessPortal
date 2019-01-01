@@ -9,7 +9,9 @@ By Eddie Atkinson
 TODO: Include link to example docs
 Access Portal API Documentation: https://uwasystemhealth.github.io/pheme-auth/?fbclid=IwAR2_RlRT0OVn8Tk34v2l2GMRblyKc4wgzASKNCvuTXiHIyuM9FQh1DhVPVk
 
-This libary requires users to have a valid API token which can be obtained using UWA Pheme details from the following URL: https://auth.uwamakers.com/login
+This libary requires users to have a valid API token.
+ API Tokens can be obtained using UWA Pheme details from the following URL: https://auth.uwamakers.com/login
+ 
 */
 #include "Arduino.h"
 #include "AccessPortal.h"
