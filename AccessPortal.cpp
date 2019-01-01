@@ -23,7 +23,6 @@ const char* cardURL = "/api/card"; // URL where requests for user information ar
 const char* permissionsURL = "/api/user/perms"; // URL where requests for user permissions are made
 
 AccessPortal::AccessPortal(char* ssid, char* password, String token) {
-  Serial.begin(115200);
   _ssid = ssid; // WiFi network name
   _password = password; // WiFI network password
   _token = token; // Access Portal API Token
