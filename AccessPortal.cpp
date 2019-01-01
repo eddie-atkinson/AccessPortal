@@ -97,7 +97,6 @@ void AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
 // Returns the status of the POST request as a boolean value.
 
   bool AccessPortal::getStudentDetails(int* byteArray, String details[6]) {
-  char* response;
   WiFiClientSecure client = connect();
   if(client.connected() != 1) {
     Serial.println("Client is not connected.");
