@@ -81,7 +81,10 @@ bool AccessPortal::detailsSplitter(String line, String details[6]) {
 // Public method to take an 8 character UID string and convert it from hexadecimal to integers,
 // placing the result in an array of integers provided as a formal parameter
 
-void AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
+bool AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
+  if(uidInput.length() != 8) {
+    return false;
+  }
   unsigned int x;
   int counter = 0;
   for(int i = 1; i < 8; i += 2) {
@@ -89,6 +92,7 @@ void AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
       x = strtoul(segment.c_str(), nullptr, 16);
       uidOutput[counter] = x;
       counter++;
+  return true;
   }
 }
 // Public method that makes a POST request to the endpoint using the UID byte array and the endpoint API token,
