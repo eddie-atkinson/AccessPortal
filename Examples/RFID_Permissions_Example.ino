@@ -1,3 +1,4 @@
+#include "AccessPortal.h"
 /* Simple RfID Permissions example using the Access Portal Library. 
   Created on 01/01/2019
   Created by Eddie Atkinson
@@ -5,7 +6,6 @@
   API tokens can be created here: https://auth.uwamakers.com/login
   
 */ 
-#include "AccessPortal.h"
 void setup() {
   AccessPortal access("YourSSID", "YourSSIDPassword", "YourAPIToken");
   Serial.begin(115200);
@@ -31,10 +31,7 @@ void setup() {
   }
   else {
     Serial.println("User does not possess this permission");
-  }
-  
-  
-  
+  } 
 }
 
 void loop() {
