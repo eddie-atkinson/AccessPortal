@@ -1,5 +1,5 @@
 #include "AccessPortal.h"
-/* Simple RfID Permissions example using the Access Portal Library. 
+/* Simple RFID Permissions example using the Access Portal Library. 
   Created on 01/01/2019
   Created by Eddie Atkinson
 
