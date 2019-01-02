@@ -1,3 +1,13 @@
+/* 
+Access Portal Library
+
+Simple library for interacting with the UWA Makers Access portal to get user information and permissions using RFID strings. 
+
+Created 01/01/2019
+By Eddie Atkinson
+ 
+*/
+
 #ifndef accessportal_h
 #define accesportal_h
 #include "Arduino.h"
