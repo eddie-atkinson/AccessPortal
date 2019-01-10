@@ -1,5 +1,9 @@
 # Access Portal Library
 ![](logo.png)
+
+[![Coverage Status](https://coveralls.io/repos/github/e-spatula/AccessPortal/badge.svg?branch=master)](https://coveralls.io/github/e-spatula/AccessPortal?branch=master)
+
+
 > An Arduino library for interacting with the UWA Makers Access Portal using RFID strings from student cards to access student information and tool permissions. 
 
 
