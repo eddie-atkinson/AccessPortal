@@ -7,7 +7,7 @@ Created 01/01/2019
 By Eddie Atkinson
 
 TODO: Include link to example docs
-Access Portal API Documentation: https://uwasystemhealth.github.io/pheme-auth/?fbclid=IwAR2_RlRT0OVn8Tk34v2l2GMRblyKc4wgzASKNCvuTXiHIyuM9FQh1DhVPVk
+Access Portal API Documentation: https://uwasystemhealth.github.io/pheme-auth/
 
 This libary requires users to have a valid API token.
  API Tokens can be obtained using UWA Pheme details from the following URL: https://auth.uwamakers.com/login
