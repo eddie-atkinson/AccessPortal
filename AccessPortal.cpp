@@ -165,14 +165,20 @@ bool AccessPortal::checkPermission(const char* permission, String userToken) {
   client.println();
   client.println(payload);
   Serial.println("request sent");
+  String line; 
+  boolean responseStart = false;
   while (client.connected()) {
-    String line = client.readStringUntil('\n');
-    if (line == "\r") {
-      Serial.println("headers received");
-      break;
+    char c = client.read();
+    if(responseStart == true) {
+      line += c;
+    }
+    if(c == ']') {
+      break; // read string returned by endpoint until terminating ]
+    }
+    if(c == '[') {
+      responseStart = true;
     }
   }
-  String line = client.readStringUntil(']'); // read string returned by endpoint until terminating ]
   Serial.println("reply was:");
   Serial.println("==========");
   Serial.println(line);
