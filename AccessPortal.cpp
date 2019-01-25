@@ -118,20 +118,28 @@ bool AccessPortal::getByteArray(String uidInput, int uidOutput[4] ) {
   client.println(payload);
 
   Serial.println("request sent");
+  String line;
+  boolean responseStart = false; 
+  Serial.println("");
   while (client.connected()) {
-    String line = client.readStringUntil('\n');
-    if (line == "\r") {
-      Serial.println("headers received");
-      break;
+    char c = client.read();
+    if(c == '{') {
+      responseStart = true;
+    }
+    if(responseStart == true) {
+      if(line.length() > 1000) {
+        break;
+      }
+      line += c;
     }
   }
-  String line = client.readStringUntil('\r');
   Serial.println("reply was:");
   Serial.println("==========");
   Serial.println(line);
   Serial.println("==========");
   Serial.println("closing connection");
-  bool successStatus = detailsSplitter(line, details);
+  
+  bool successStatus = detailsSplitter(line, details); 
   return successStatus;
 }
 
